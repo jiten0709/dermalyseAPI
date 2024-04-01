@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import tensorflow as tf
 import numpy as np
 from PIL import Image as image
-from keras.preprocessing import image as keras_image
+from tensorflow.keras.preprocessing import image as keras_image
 from io import BytesIO
 import base64
 
