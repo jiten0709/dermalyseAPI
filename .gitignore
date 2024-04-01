@@ -1,2 +1,5 @@
 # virtual environment
 my_venv
+
+# Other
+.DS_Store
