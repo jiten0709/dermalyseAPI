@@ -2,9 +2,9 @@ from flask import Flask, request, jsonify
 import tensorflow as tf
 import numpy as np
 from PIL import Image as image
-from tensorflow.keras.preprocessing import image as keras_image
 from io import BytesIO
 import base64
+# from tensorflow.keras.preprocessing import image as keras_image
 
 
 app = Flask(__name__)
@@ -49,6 +49,8 @@ def predict():
         # Convert float32 to float
         probability = float(flattened_predictions[index])
         top3_predictions[class_name] = probability
+    
+    print(top3_predictions)
 
     return jsonify(top3_predictions)
 
