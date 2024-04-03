@@ -32,7 +32,9 @@ def predict():
     # Resize the image to the target size
     img = img.resize((299, 299))
     # Convert the image to a NumPy array
-    img_array = keras_image.img_to_array(img)
+    # img_array = keras_image.img_to_array(img)
+    img_array = tf.keras.preprocessing.image(img)
+
     img_array = np.expand_dims(img_array, axis=0) / 255.
 
     # Assuming model is already loaded
