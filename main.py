@@ -32,8 +32,7 @@ def predict():
     # Resize the image to the target size
     img = img.resize((299, 299))
     # Convert the image to a NumPy array
-    # img_array = keras_image.img_to_array(img)
-    img_array = tf.keras.preprocessing.image(img)
+    img_array = tf.keras.preprocessing.image.img_to_array(img)
 
     img_array = np.expand_dims(img_array, axis=0) / 255.
 
@@ -43,18 +42,23 @@ def predict():
     flattened_predictions = instance_predictions.flatten()
     sorted_indices = np.argsort(flattened_predictions)[::-1]
 
-    top3_indices = sorted_indices[:3]
-    top3_predictions = {}
+    # Initialize an empty list to store the sorted predictions
+    sorted_predictions = []
 
-    for index in top3_indices:
+    for index in sorted_indices:
         class_name = list(class_labels.keys())[index]
-        # Convert float32 to float
-        probability = float(flattened_predictions[index])
-        top3_predictions[class_name] = probability
+        # Convert float32 to float, multiply by 100 to get percentage, and round to 2 decimal places
+        probability = round(float(flattened_predictions[index]) * 100, 2)
+        # Store the class name and probability as a tuple
+        sorted_predictions.append((class_name, probability))
     
+    # Convert the list of tuples into a dictionary
+    top3_predictions = dict(sorted_predictions[:3])
+
     print(top3_predictions)
 
     return jsonify(top3_predictions)
+
 
 
 if __name__ == '__main__':
