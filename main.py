@@ -50,7 +50,8 @@ def predict():
         # Convert float32 to float, multiply by 100 to get percentage, and round to 2 decimal places
         probability = round(float(flattened_predictions[index]) * 100, 2)
         # Store the class name and probability as a tuple
-        sorted_predictions.append((class_name, probability))
+        if probability > 30:
+            sorted_predictions.append((class_name, probability))
     
     # Convert the list of tuples into a dictionary
     top3_predictions = dict(sorted_predictions[:3])
@@ -91,8 +92,8 @@ def test():
         # Convert float32 to float, multiply by 100 to get percentage, and round to 2 decimal places
         probability = round(float(flattened_predictions[index]) * 100, 2)
         # Store the class name and probability as a tuple
-        sorted_predictions.append((class_name, probability))
-    
+        if probability > 30:
+            sorted_predictions.append((class_name, probability))
     # Convert the list of tuples into a dictionary
     top3_predictions = dict(sorted_predictions[:3])
 

@@ -66,3 +66,7 @@ Start the server
   python3 main.py
 ```
 
+## Connect with NGROK
+```bash
+  ngrok http http://127.0.0.1:5000
+```
