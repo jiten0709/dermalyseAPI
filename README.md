@@ -1,4 +1,3 @@
-
 # DERMALYSE APP'S API
 
 This API call is used to detect what top 3 most probable diseases a provided image is.
@@ -9,7 +8,7 @@ Its a made with Flask framework...follow SETUP STPES to locally run it on your m
 #### Its hosted on zeet.co
 
 ```http
-  LINK 
+  LINK
 ```
 
 #### Send image as payload
@@ -22,11 +21,9 @@ Its a made with Flask framework...follow SETUP STPES to locally run it on your m
   Response {'disease1': probability1,'disease2': probability2,'disease3': probability3}
 ```
 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `file` | `base64 encoded` | **Required**. an image file converted to base64 encoded|
-
-
+| Parameter | Type             | Description                                             |
+| :-------- | :--------------- | :------------------------------------------------------ |
+| `file`    | `base64 encoded` | **Required**. an image file converted to base64 encoded |
 
 ## Run Locally
 
@@ -67,6 +64,7 @@ Start the server
 ```
 
 ## Connect with NGROK
+
 ```bash
-  ngrok http http://127.0.0.1:5000
+  ngrok http http://127.0.0.1:5001
 ```
